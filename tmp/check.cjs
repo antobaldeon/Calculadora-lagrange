@@ -13,6 +13,20 @@ const assert=require('assert');
  await page.locator('#example').click();await page.locator('#minX').fill('12');await page.locator('.primary').click();assert(await page.locator('#error').isVisible());
  await page.locator('#example').click();await page.setViewportSize({width:390,height:844});await page.screenshot({path:'tmp/mobile.png',fullPage:true});
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.deepStrictEqual(errors,[]);
+ await page.locator('[data-method="newton"]').click();
+ assert.strictEqual(await page.locator('#result').innerText(),'139');
+ assert.strictEqual(await page.locator('.difference-table tbody tr').count(),4);
+ assert((await page.locator('#bases').innerText()).includes('residuo = 0'));
+ await page.locator('#evalX').fill('6');await page.locator('.primary').click();
+ await page.locator('[data-method="lagrange"]').click();assert.strictEqual(await page.locator('#result').innerText(),'55.25');
+ await page.locator('[data-method="newton"]').click();assert.strictEqual(await page.locator('#evalX').inputValue(),'6');
+ await page.locator('#example').click();
+ await page.screenshot({path:'tmp/newton-mobile.png',fullPage:true});
+ assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+ await page.setViewportSize({width:1440,height:1050});await page.screenshot({path:'tmp/newton-desktop.png',fullPage:true});
+ await page.locator('.node-x').nth(1).fill('1');await page.locator('.primary').click();assert(await page.locator('#error').isVisible());
+ assert.deepStrictEqual(errors,[]);
  await browser.close();console.log('Interfaz: ejemplo, duplicados, extrapolación, nodos dinámicos, intervalo y móvil correctos.');
 })().catch(e=>{console.error(e);process.exit(1)});
+
 

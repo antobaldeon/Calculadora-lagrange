@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Interpolar · Interpolación de Lagrange</title>
+    <title>Métodos Lab · Laboratorio numérico</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
@@ -12,16 +12,19 @@
       <a class="brand" href="#"
         >✳
         <span
-          >Interpolar<span class="brand-small">LABORATORIO NUMÉRICO</span></span
-        ></a
-      ><a class="theory-link" href="#teoria">Explorar la teoría ↗</a>
-    </header>
+          >Métodos Lab<span class="brand-small">LABORATORIO NUMÉRICO</span></span
+        >
+        </a
+      ><nav class="method-nav" aria-label="Temas de métodos numéricos"><button type="button" data-method="lagrange" aria-pressed="true">Lagrange <small>Sesión 08</small></button><button type="button" data-method="newton" aria-pressed="false">Newton <small>Sesión 09</small></button></nav><a class="theory-link" href="#teoria">Explorar la teoría ↗</a>
+              <span class="brand-small">Antonella Baldeon</span>
+  
+  </header>
     <main>
       <section class="hero">
         <div>
-          <span class="eyebrow">ANÁLISIS NUMÉRICO / SESIÓN 08</span>
-          <h1>Entre puntos,<br /><em>encuentra respuestas.</em></h1>
-          <p>
+          <span class="eyebrow" id="sessionLabel">ANÁLISIS NUMÉRICO / SESIÓN 08</span>
+          <h1 id="heroTitle">Entre puntos,<br /><em>encuentra respuestas.</em></h1>
+          <p id="heroDescription">
             Transforma tus datos en una curva. Interpola, visualiza y aprende el
             método de Lagrange, paso a paso.
           </p>
@@ -86,7 +89,7 @@
                 />
               </div>
             </div>
-            <p class="hint">
+            <p class="hint" id="exampleHint">
               El ejemplo usa memoria (GB) y latencia (ms). Para otros problemas,
               x e y representan tus variables.
             </p>
@@ -138,7 +141,7 @@
           <span class="step">03</span>
           <div>
             <h2>La respuesta tiene un proceso</h2>
-            <p>Del producto de factores al polinomio final</p>
+            <p id="processCaption">Del producto de factores al polinomio final</p>
           </div>
           <button id="export" class="secondary">Descargar resultados ↓</button>
         </div>
@@ -146,9 +149,10 @@
           <span class="eyebrow">POLINOMIO EN FORMA ESTÁNDAR</span>
           <div id="polynomial"></div>
         </div>
+        <div id="newtonTableSection" hidden></div>
         <details open>
-          <summary>Bases de Lagrange y sustitución numérica</summary>
-          <p>
+          <summary id="processTitle">Bases de Lagrange y sustitución numérica</summary>
+          <p id="processDescription">
             Cada base vale 1 en su propio nodo y 0 en los demás. Multiplicamos
             cada base por su valor yᵢ y sumamos sus contribuciones.
           </p>
@@ -203,7 +207,7 @@
       </section>
       <footer>
         rosé / Hecho para explorar, calcular y comprender.<span
-          >Interpolación de Lagrange · HTML + CSS + JavaScript</span
+          >Métodos Lab · Lagrange y Newton</span
         >
       </footer>
     </main>

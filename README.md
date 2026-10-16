@@ -1,35 +1,18 @@
-# Rosé · Calculadora de interpolación de Lagrange
+# Métodos Lab · Laboratorio numérico
 
-## Cómo usar
+Abre index.html en tu navegador. No requiere instalación ni conexión a internet.
 
-Abre `index.html` con doble clic en Chrome, Edge o Firefox. No requiere instalación, servidor ni conexión a internet. Conserva `index.html`, `styles.css` y `script.js` en la misma carpeta.
+Selecciona Lagrange (sesión 08) o Newton (sesión 09) en el navbar. Cada sección conserva sus datos mientras cambias de tema y comparte el diseño rosado, los nodos editables, la gráfica, el desarrollo, la teoría y la descarga de resultados.
 
-1. Ingresa los nodos (x, y). Cada x debe ser diferente.
-2. Indica el punto a evaluar y el intervalo de la gráfica.
-3. Pulsa **Calcular interpolación**.
-4. Revisa el resultado, las bases, el polinomio y las contribuciones. **Descargar resultados** guarda el desarrollo en un archivo de texto.
+- Lagrange: ejemplo de memoria y latencia. P(6) = 55,25.
+- Newton: ejemplo de carga y latencia del documento de sesión 09. Nodos (1,45), (2,65), (4,110), (7,220). x se mide en centenas de req/s. P(5) = 139 ms.
+- Newton muestra la tabla triangular completa, los coeficientes, las contribuciones de cada término, el polinomio estándar y los residuos en los nodos.
+- Ambas secciones admiten entre 2 y 10 nodos y un intervalo de gráfica configurable. Pulsa Calcular interpolación después de editar.
 
-El botón **Restaurar ejemplo del documento** carga (2,150), (4,85), (8,50), (12,70), evalúa x = 6 y grafica en [2,12]. La latencia interpolada es **55,25 ms**.
+Newton usa diferencias divididas y evaluación por multiplicación anidada. Su polinomio del ejemplo es P(x) = x³/3 − 3x²/2 + 133x/6 + 24.
 
-## Requisitos de la parte dos
+JavaScript utiliza doble precisión; la pantalla redondea a 10 cifras significativas. Extrapolar puede ser poco fiable.
 
-- Cuatro nodos editables y punto de evaluación editable.
-- Algoritmo directo de Lagrange con bucles anidados O(n²).
-- Resultado numérico, curva en [2,12], nodos experimentales y punto evaluado destacado.
-- Extensión para otros problemas: de 2 a 10 nodos e intervalo configurable.
-- Teoría de nodos, bases, evaluación, gráfica y extrapolación.
-- Desarrollo algebraico de las bases y del polinomio en forma estándar.
+Archivos: index.html, styles.css y script.js deben permanecer juntos.
 
-## Archivos
-
-- `index.html`: estructura y contenido educativo.
-- `styles.css`: diseño rosado pastel y adaptación a móvil.
-- `script.js`: motor matemático, validación, gráfica SVG y exportación.
-
-## Precisión y alcance
-
-JavaScript utiliza números de doble precisión. Se muestran hasta 10 cifras significativas; los cálculos conservan la precisión disponible. El grado es como máximo n − 1; puede ser menor si los datos lo permiten. El polinomio desarrollado puede acumular redondeo con nodos cercanos o valores grandes. La evaluación utiliza directamente la fórmula de Lagrange. Interpolar no garantiza que el modelo reproduzca un fenómeno físico; la extrapolación se identifica en pantalla.
-
-## Validación
-
-Se verificaron P(6) = 55,25, el paso por todos los nodos, la concordancia entre el polinomio desarrollado y Lagrange y un caso lineal. Se revisó la interfaz en Edge a 1440 px y 390 px, y se comprobaron nodos repetidos, extrapolación, adición de nodos e intervalo inválido.
+Validación: pruebas en Edge de ambos ejemplos, navegación con conservación de datos, nodos repetidos, extrapolación, adición de nodos, intervalo inválido y ausencia de desbordamiento horizontal a 390 px. Revisión visual de Newton en escritorio y móvil.
